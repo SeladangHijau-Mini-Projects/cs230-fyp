@@ -1,9 +1,6 @@
 <template>
   <div id="navbar">
     <b-navbar toggleable="lg" type="dark" variant="dark">
-      <!-- nav icon -->
-      <b-navbar-brand href="/">NavBar</b-navbar-brand>
-
       <!-- collapsed menu on tablet screen or smaller -->
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -14,6 +11,11 @@
           <b-nav-item href="/about">About</b-nav-item>
         </b-navbar-nav>
       </b-collapse>
+
+      <!-- nav icon -->
+      <b-navbar-brand href="/">
+        MALAYSIA ELECTION DATA VISUALIZATION (GE-14)
+      </b-navbar-brand>
     </b-navbar>
   </div>
 </template>
