@@ -13,7 +13,7 @@ COPY . .
 RUN npm run build
 
 # expose port
-EXPOSE 3000
+EXPOSE 2000
 
 # on container run, run command
 CMD [ "npm", "run", "start" ]
