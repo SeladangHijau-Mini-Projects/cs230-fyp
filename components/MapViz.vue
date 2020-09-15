@@ -60,10 +60,10 @@ export default {
     const parliamentCoordinateList = this.electionStates.reduce(
       (acc, state) => {
         acc.push(
-          Object.values(state.parliaments).reduce((acc, parliament) => {
-            acc.push([parliament.coordinate.x, parliament.coordinate.y]);
+          Object.values(state.parliaments).reduce((acc2, parliament) => {
+            acc2.push([parliament.coordinate.x, parliament.coordinate.y]);
 
-            return acc;
+            return acc2;
           }, [])
         );
 
@@ -71,8 +71,6 @@ export default {
       },
       []
     );
-
-    console.log(parliamentCoordinateList);
 
     const g = svg.selectAll('g').data(stateList);
 
@@ -96,7 +94,11 @@ export default {
       .enter()
       .append('path')
       .attr('class', 'parliament')
-      .attr('id', (d, i, j) => {
+      .attr('id', (d, i) => {
+        console.log(this); // TODO: debug error here (cannot get index of parent node)
+        console.log(this.parentNode);
+        const j = +this.parentNode.getAttribute('data-index');
+        console.log(stateList[j]);
         return Object.keys(stateList[j].parliaments)[i];
       })
       .attr('d', (d) => {
@@ -108,9 +110,6 @@ export default {
           hexbin.hexagon()
         );
       });
-
-    console.log(hexbin);
-    console.log(parliamentCoordinateList);
   },
 };
 </script>
