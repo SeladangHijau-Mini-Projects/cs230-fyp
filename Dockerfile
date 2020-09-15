@@ -9,6 +9,7 @@ COPY package*.json ./
 RUN npm install
 
 # build app
+COPY .env .
 COPY . .
 RUN npm run generate
 
