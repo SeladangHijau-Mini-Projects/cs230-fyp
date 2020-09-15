@@ -8,7 +8,7 @@ export default {
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
    */
-  target: 'server',
+  target: 'static',
   server: {
     host: process.env.HOST || '0.0.0.0',
     port: process.env.PORT || 3000,

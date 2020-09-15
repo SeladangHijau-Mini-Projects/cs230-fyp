@@ -10,11 +10,10 @@ RUN npm install
 
 # build app
 COPY . .
-RUN npm run build
+RUN npm run generate
 
 # expose port
 EXPOSE 2000
 
 # on container run, run command
-# CMD [ "node", "dist/main.js" ]
 CMD [ "npm", "run", "start" ]
