@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import MapViz from '../components/MapViz'
+import MapViz from '../components/MapViz';
 
 export default {
   components: { MapViz },
-}
+};
 </script>
 
 <style></style>

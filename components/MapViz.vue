@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import * as d3 from 'd3'
-import * as d3Hexbin from 'd3-hexbin'
+import * as d3 from 'd3';
+import * as d3Hexbin from 'd3-hexbin';
 
 export default {
   name: 'MapViz',
@@ -30,13 +30,13 @@ export default {
   async fetch() {
     this.raceSetting = await fetch(
       `${this.baseUrl}${this.raceEndpoint}`
-    ).then((res) => res.json())
+    ).then((res) => res.json());
     this.partySetting = await fetch(
       `${this.baseUrl}${this.partyEndpoint}`
-    ).then((res) => res.json())
+    ).then((res) => res.json());
     this.electionStates = await fetch(
       `${this.baseUrl}${this.stateEndpoint}`
-    ).then((res) => res.json())
+    ).then((res) => res.json());
   },
   data() {
     return {
@@ -47,55 +47,57 @@ export default {
       raceSetting: null,
       partySetting: null,
       electionStates: null,
-    }
+    };
   },
   mounted() {
-    const hexbin = d3Hexbin.hexbin().radius(this.hexagonRadius)
+    const hexbin = d3Hexbin.hexbin().radius(this.hexagonRadius);
     const svg = d3
       .select('#map')
       .append('svg')
       .attr('width', this.width)
-      .attr('height', this.height)
-    const stateList = this.electionStates
+      .attr('height', this.height);
+    const stateList = this.electionStates;
     const parliamentCoordinateList = this.electionStates.reduce(
       (acc, state) => {
         acc.push(
           Object.values(state.parliaments).reduce((acc, parliament) => {
-            acc.push([parliament.coordinate.x, parliament.coordinate.y])
+            acc.push([parliament.coordinate.x, parliament.coordinate.y]);
 
-            return acc
+            return acc;
           }, [])
-        )
+        );
 
-        return acc
+        return acc;
       },
       []
-    )
+    );
 
-    const g = svg.selectAll('g').data(stateList)
+    console.log(parliamentCoordinateList);
+
+    const g = svg.selectAll('g').data(stateList);
 
     g.enter()
       .append('g')
       .attr('class', 'state')
       .attr('id', (d, i) => {
-        return stateList[i].id
+        return stateList[i].id;
       })
       .style('fill', (d, i) => {
-        return stateList[i].color
+        return stateList[i].color;
       })
       .style('stroke', (d, i) => {
-        return stateList[i].color
+        return stateList[i].color;
       })
       .on('click', (d, i, j) => {})
       .selectAll('.parliament')
       .data((d, i) => {
-        return hexbin(parliamentCoordinateList[i])
+        return hexbin(parliamentCoordinateList[i]);
       })
       .enter()
       .append('path')
       .attr('class', 'parliament')
       .attr('id', (d, i, j) => {
-        return Object.keys(stateList[j].parliaments)[i]
+        return Object.keys(stateList[j].parliaments)[i];
       })
       .attr('d', (d) => {
         return (
@@ -104,13 +106,13 @@ export default {
           ',' +
           (d.y + this.padding) +
           hexbin.hexagon()
-        )
-      })
+        );
+      });
 
-    console.log(hexbin)
-    console.log(parliamentCoordinateList)
+    console.log(hexbin);
+    console.log(parliamentCoordinateList);
   },
-}
+};
 </script>
 
 <style scoped></style>

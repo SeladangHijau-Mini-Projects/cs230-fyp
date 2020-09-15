@@ -26,10 +26,10 @@ export default {
   props: {},
 
   data() {
-    return {}
+    return {};
   },
   methods: {},
-}
+};
 </script>
 
 <style scoped></style>
