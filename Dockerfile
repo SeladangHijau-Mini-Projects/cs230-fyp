@@ -16,4 +16,5 @@ RUN npm run build
 EXPOSE 2000
 
 # on container run, run command
+# CMD [ "node", "dist/main.js" ]
 CMD [ "npm", "run", "start" ]
