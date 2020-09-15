@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <MapViz />
+    <MapViz :width="700" :height="500" :padding="100" :hexagon-radius="10" />
     <h1>Home</h1>
   </div>
 </template>
