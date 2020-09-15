@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <MapViz />
-    <h1>Home</h1>
   </div>
 </template>
 
