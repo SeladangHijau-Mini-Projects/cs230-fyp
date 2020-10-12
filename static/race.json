@@ -1,0 +1,22 @@
+{
+  "malay": {
+    "id": "malay",
+    "name": "Melayu",
+    "color": "#55FF00"
+  },
+  "chinese": {
+    "id": "chinese",
+    "name": "Cina",
+    "color": "#FBFF00"
+  },
+  "indian": {
+    "id": "indian",
+    "name": "India",
+    "color": "#FF0000"
+  },
+  "others": {
+    "id": "others",
+    "name": "Others",
+    "color": "#0068FF"
+  }
+}

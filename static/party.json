@@ -1,0 +1,20 @@
+{
+  "bn": {
+    "id": "bn",
+    "name": "Barisan Nasional",
+    "title": "BN",
+    "color": "#0000FF"
+  },
+  "dap": {
+    "id": "dap",
+    "name": "Democratic Action Party",
+    "title": "DAP",
+    "color": "#FF0000"
+  },
+  "pas": {
+    "id": "pas",
+    "name": "Parti Islam Se-Malaysia",
+    "title": "PAS",
+    "color": "#00FF00"
+  }
+}
