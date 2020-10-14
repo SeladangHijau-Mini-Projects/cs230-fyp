@@ -11,8 +11,8 @@ export default {
     data() {
         return {
             hexagonRadius: 10,
-            width: 500,
-            height: 700,
+            width: 700,
+            height: 500,
             raceSetting: null,
             partySetting: null,
             stateSetting: null,
@@ -53,10 +53,13 @@ export default {
                 .data(stateHexes)
                 .enter()
                 .append('g')
+                .attr('cursor', 'pointer')
                 .attr('transform', function (hex) {
-                    return 'translate(' + hex.x + ',' + hex.y + ')';
-                })
-                .on('click', function (event, hex) {});
+                    return `translate(${hex.x}, ${hex.y})`;
+                });
+
+            // add on click listener to state hex
+            stateHexmap.on('click', function (event, hex) {});
 
             // Draw hex polygons
             stateHexmap
@@ -86,4 +89,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#map {
+    border: 1px solid black;
+}
+</style>
