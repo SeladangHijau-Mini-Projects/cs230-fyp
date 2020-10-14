@@ -18,6 +18,7 @@
     "bootstrap-vue": "^2.15.0",
     "d3": "^6.1.1",
     "d3-hexbin": "^0.2.2",
+    "d3-hexjson": "^1.1.0",
     "nuxt": "^2.14.0"
   },
   "devDependencies": {
