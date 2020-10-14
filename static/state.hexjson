@@ -4,7 +4,6 @@
     "perlis": {
       "q": -10,
       "r": 12,
-      "id": "perlis",
       "label": "PERLIS",
       "result": {
         "voterNo": 100,

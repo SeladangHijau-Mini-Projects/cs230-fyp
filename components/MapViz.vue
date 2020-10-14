@@ -74,6 +74,7 @@ export default {
             // Add labels to hex polygon
             stateHexmap
                 .append('text')
+                .attr('class', 'label-state')
                 .attr('stroke', 'black')
                 .attr('stroke-width', '1')
                 .attr('text-anchor', 'middle')
