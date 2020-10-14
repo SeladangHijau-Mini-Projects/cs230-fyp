@@ -1,5 +1,5 @@
 <template>
-    <svg id="map" height="500" width="700"></svg>
+    <svg id="map" :height="height" :width="width"></svg>
 </template>
 
 <script>
@@ -10,8 +10,9 @@ export default {
     name: 'MapViz',
     data() {
         return {
-            padding: 100,
             hexagonRadius: 10,
+            width: 700,
+            height: 500,
             raceSetting: null,
             partySetting: null,
             stateSetting: null,
@@ -33,28 +34,17 @@ export default {
         drawMap() {
             const partySetting = this.partySetting;
 
-            // Set the size and margins of the svg
-            const margin = { top: 10, right: 10, bottom: 10, left: 10 };
-            const width = 500 - margin.left - margin.right;
-            const height = 420 - margin.top - margin.bottom;
-
             // Create the svg element
             const svg = d3
                 .select('#map')
-                .append('svg')
-                .attr('width', width + margin.left + margin.right)
-                .attr('height', height + margin.top + margin.bottom)
-                .append('g')
-                .attr(
-                    'transform',
-                    'translate(' + margin.left + ',' + margin.top + ')',
-                );
+                .attr('viewBox', [0, 0, this.width, this.height])
+                .append('g');
 
             // Render state hexes
             const stateHexes = d3Hexjson.renderHexJSON(
                 this.stateHexjson,
-                width,
-                height,
+                this.width,
+                this.height,
             );
 
             // Bind the hexes to g elements of the svg and position them
@@ -63,9 +53,13 @@ export default {
                 .data(stateHexes)
                 .enter()
                 .append('g')
+                .attr('cursor', 'pointer')
                 .attr('transform', function (hex) {
-                    return 'translate(' + hex.x + ',' + hex.y + ')';
+                    return `translate(${hex.x}, ${hex.y})`;
                 });
+
+            // add on click listener to state hex
+            stateHexmap.on('click', function (event, hex) {});
 
             // Draw hex polygons
             stateHexmap
@@ -80,10 +74,10 @@ export default {
                     return partySetting[winningPartyId].color;
                 });
 
-            // Add labels
+            // Add labels to hex polygon
             stateHexmap
                 .append('text')
-                .append('tspan')
+                .attr('class', 'label-state')
                 .attr('stroke', 'black')
                 .attr('stroke-width', '1')
                 .attr('text-anchor', 'middle')
@@ -95,4 +89,8 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+#map {
+    border: 1px solid black;
+}
+</style>
