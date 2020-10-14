@@ -1,0 +1,198 @@
+{
+  "layout": "odd-r",
+  "hexes": {
+    "perlis": {
+      "q": -10,
+      "r": 12,
+      "id": "perlis",
+      "label": "PERLIS",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "bn",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "kedah": {
+      "q": -10,
+      "r": 11,
+      "label": "KEDAH",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "pulauPinang": {
+      "q": -11,
+      "r": 11,
+      "label": "PULAU PINANG",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "dap",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "perak": {
+      "q": -10,
+      "r": 10,
+      "label": "PERAK",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "kelantan": {
+      "q": -9,
+      "r": 11,
+      "label": "KELANTAN",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "terengganu": {
+      "q": -8,
+      "r": 10,
+      "label": "TERANGGANU",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "pahang": {
+      "q": -8,
+      "r": 9,
+      "label": "PAHANG",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "selangor": {
+      "q": -10,
+      "r": 9,
+      "label": "SELANGOR",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "melaka": {
+      "q": -8,
+      "r": 8,
+      "label": "MELAKA",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "negeriSembilan": {
+      "q": -9,
+      "r": 8,
+      "label": "NEGERI SEMBILAN",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "johor": {
+      "q": -7,
+      "r": 8,
+      "label": "JOHOR",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "sabah": {
+      "q": -4,
+      "r": 9,
+      "label": "SABAH",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "sarawak": {
+      "q": -5,
+      "r": 8,
+      "label": "SARAWAK",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "kualaLumpur": {
+      "q": -9,
+      "r": 9,
+      "label": "KUALA LUMPUR",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "putrajaya": {
+      "q": -9,
+      "r": 10,
+      "label": "PUTRAJAYA",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    },
+    "labuan": {
+      "q": -5,
+      "r": 9,
+      "label": "LABUAN",
+      "result": {
+        "voterNo": 100,
+        "voteNo": 50,
+        "partyId": "pas",
+        "candidateName": "Najib Tun Razak",
+        "candidatePicture": ""
+      }
+    }
+  }
+}
