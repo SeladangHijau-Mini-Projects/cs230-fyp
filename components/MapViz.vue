@@ -10,19 +10,24 @@ export default {
     name: 'MapViz',
     data() {
         return {
-            hexagonRadius: 10,
+            // config
             width: 700,
             height: 500,
+            hexagonRadius: 10,
             raceSetting: null,
             partySetting: null,
             stateSetting: null,
-            hexJson: null,
+
+            // d3 map
+            svg: null,
+            stateHexList: [],
         };
     },
 
     async mounted() {
         await this.fetchData();
         this.drawMap();
+        this.drawStateHex();
     },
     methods: {
         async fetchData() {
@@ -32,37 +37,35 @@ export default {
             this.stateHexjson = await d3.json('./state.hexjson');
         },
         drawMap() {
-            const partySetting = this.partySetting;
-
             // Create the svg element
-            const svg = d3
+            this.svg = d3
                 .select('#map')
                 .attr('viewBox', [0, 0, this.width, this.height])
                 .append('g');
-
-            // Render state hexes
-            const stateHexes = d3Hexjson.renderHexJSON(
+        },
+        drawStateHex() {
+            // declare state hexes
+            const stateHexJson = d3Hexjson.renderHexJSON(
                 this.stateHexjson,
                 this.width,
                 this.height,
             );
 
-            // Bind the hexes to g elements of the svg and position them
-            const stateHexmap = svg
+            // initialize state hexes
+            this.stateHexList = this.svg
                 .selectAll('g')
-                .data(stateHexes)
+                .data(stateHexJson)
                 .enter()
                 .append('g')
                 .attr('cursor', 'pointer')
                 .attr('transform', function (hex) {
                     return `translate(${hex.x}, ${hex.y})`;
-                });
+                })
+                .on('click', function (event, hex) {});
 
-            // add on click listener to state hex
-            stateHexmap.on('click', function (event, hex) {});
-
-            // Draw hex polygons
-            stateHexmap
+            // draw state hex polygons
+            const partySettingList = this.partySetting;
+            this.stateHexList
                 .append('polygon')
                 .attr('points', function (hex) {
                     return hex.points;
@@ -71,11 +74,11 @@ export default {
                 .attr('stroke-width', '2')
                 .attr('fill', function (hex) {
                     const winningPartyId = hex.result.partyId;
-                    return partySetting[winningPartyId].color;
+                    return partySettingList[winningPartyId].color;
                 });
 
             // Add labels to hex polygon
-            stateHexmap
+            this.stateHexList
                 .append('text')
                 .attr('class', 'label-state')
                 .attr('stroke', 'black')
