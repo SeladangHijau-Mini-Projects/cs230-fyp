@@ -17,6 +17,7 @@ export default {
             raceSetting: null,
             partySetting: null,
             stateSetting: null,
+            stateHexJson: null,
 
             // d3 map
             svg: null,
@@ -34,7 +35,7 @@ export default {
             this.raceSetting = await d3.json('./race.json');
             this.partySetting = await d3.json('./party.json');
             this.stateSetting = await d3.json('./state.json');
-            this.stateHexjson = await d3.json('./state.hexjson');
+            this.stateHexJson = await d3.json('./state.hexjson');
         },
         drawMap() {
             // Create the svg element
@@ -44,28 +45,64 @@ export default {
                 .append('g');
         },
         drawStateHex() {
-            // declare state hexes
-            const stateHexJson = d3Hexjson.renderHexJSON(
-                this.stateHexjson,
+            // draw state hexes
+            const partySettingList = this.partySetting;
+
+            this.stateHexList = this.initHex(
+                this.svg,
+                this.stateHexJson,
                 this.width,
                 this.height,
             );
+            this.drawHex(this.stateHexList, partySettingList, 'state');
+            this.drawHexLabel(this.stateHexList);
 
-            // initialize state hexes
-            this.stateHexList = this.svg
+            // draw parliament hex on state click
+            const tempSvg = this.svg;
+            const tempWidth = this.width;
+            const tempHeight = this.height;
+            const tempStateHexJsonData = this.stateHexJson;
+            const funcInitHex = this.initHex;
+            const funcDrawHex = this.drawHex;
+            const funcDrawHexLabel = this.drawHexLabel;
+
+            this.stateHexList.on('click', (event, hex) => {
+                // clear state hexes
+                d3.selectAll('.state').remove();
+
+                const parliamentHexList = funcInitHex(
+                    tempSvg,
+                    tempStateHexJsonData.hexes[hex.key].parliament,
+                    tempWidth,
+                    tempHeight,
+                );
+                funcDrawHex(parliamentHexList, partySettingList, 'parliament');
+                funcDrawHexLabel(parliamentHexList);
+
+                parliamentHexList.on(
+                    'click',
+                    (parliamentEvent, parliamentKey) => {
+                        console.log('parliamnentKey: ', parliamentKey);
+                    },
+                );
+            });
+        },
+        initHex(svg, hexJsonData, width, height) {
+            // declare state hexes
+            const hexJson = d3Hexjson.renderHexJSON(hexJsonData, width, height);
+
+            return svg
                 .selectAll('g')
-                .data(stateHexJson)
+                .data(hexJson)
                 .enter()
                 .append('g')
                 .attr('cursor', 'pointer')
                 .attr('transform', function (hex) {
                     return `translate(${hex.x}, ${hex.y})`;
-                })
-                .on('click', function (event, hex) {});
-
-            // draw state hex polygons
-            const partySettingList = this.partySetting;
-            this.stateHexList
+                });
+        },
+        drawHex(hexList, partySettingList, className = null) {
+            hexList
                 .append('polygon')
                 .attr('points', function (hex) {
                     return hex.points;
@@ -77,8 +114,12 @@ export default {
                     return partySettingList[winningPartyId].color;
                 });
 
-            // Add labels to hex polygon
-            this.stateHexList
+            if (className) {
+                hexList.attr('class', className);
+            }
+        },
+        drawHexLabel(hexList) {
+            hexList
                 .append('text')
                 .attr('class', 'label-state')
                 .attr('stroke', 'black')
