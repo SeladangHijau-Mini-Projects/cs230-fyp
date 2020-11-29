@@ -28,7 +28,6 @@ export default {
     async mounted() {
         await this.fetchData();
         this.drawMap();
-        this.drawStateHex();
     },
     methods: {
         async fetchData() {
@@ -43,8 +42,7 @@ export default {
                 .select('#map')
                 .attr('viewBox', [0, 0, this.width, this.height])
                 .append('g');
-        },
-        drawStateHex() {
+
             // draw state hexes
             const partySettingList = this.partySetting;
 
@@ -112,6 +110,15 @@ export default {
                 .attr('fill', function (hex) {
                     const winningPartyId = hex.result.partyId;
                     return partySettingList[winningPartyId].color;
+                });
+
+            // TODO: show tooltip on mouse over
+            hexList
+                .on('mouseover', function (d) {
+                    console.log('(on enter) d: ', d);
+                })
+                .on('mouseout', function (d) {
+                    console.log('(on exit) d: ', d);
                 });
 
             if (className) {
