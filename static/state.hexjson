@@ -11,6 +11,47 @@
         "partyId": "bn",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {
+          "p001": {
+            "q": -10,
+            "r": 12,
+            "label": "PADANG BESAR",
+            "result": {
+              "voterNo": 100,
+              "voteNo": 50,
+              "partyId": "pas",
+              "candidateName": "Najib Tun Razak",
+              "candidatePicture": ""
+            }
+          },
+          "p002": {
+            "q": -10,
+            "r": 11,
+            "label": "KANGAR",
+            "result": {
+              "voterNo": 100,
+              "voteNo": 50,
+              "partyId": "pas",
+              "candidateName": "Najib Tun Razak",
+              "candidatePicture": ""
+            }
+          },
+          "p003": {
+            "q": -11,
+            "r": 11,
+            "label": "ARAU",
+            "result": {
+              "voterNo": 100,
+              "voteNo": 50,
+              "partyId": "pas",
+              "candidateName": "Najib Tun Razak",
+              "candidatePicture": ""
+            }
+          }
+        }
       }
     },
     "kedah": {
@@ -23,6 +64,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "pulauPinang": {
@@ -35,6 +80,10 @@
         "partyId": "dap",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "perak": {
@@ -47,6 +96,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "kelantan": {
@@ -59,6 +112,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "terengganu": {
@@ -71,6 +128,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "pahang": {
@@ -83,6 +144,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "selangor": {
@@ -95,6 +160,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "melaka": {
@@ -107,6 +176,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "negeriSembilan": {
@@ -119,6 +192,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "johor": {
@@ -131,6 +208,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "sabah": {
@@ -143,6 +224,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "sarawak": {
@@ -155,6 +240,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "kualaLumpur": {
@@ -167,6 +256,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "putrajaya": {
@@ -179,6 +272,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     },
     "labuan": {
@@ -191,6 +288,10 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
     }
   }
