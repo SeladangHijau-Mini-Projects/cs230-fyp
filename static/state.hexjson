@@ -288,11 +288,11 @@
         "partyId": "pas",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
+      },
+      "parliament": {
+        "layout": "odd-r",
+        "hexes": {}
       }
-    },
-    "parliament": {
-      "layout": "odd-r",
-      "hexes": {}
     }
   }
 }
