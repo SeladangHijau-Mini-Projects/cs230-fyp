@@ -16,5 +16,11 @@
     "name": "Parti Islam Se-Malaysia",
     "title": "PAS",
     "color": "#00FF00"
+  },
+  "others": {
+    "id": "others",
+    "name": "Others",
+    "title": "Others",
+    "color": "#ABB2B9"
   }
 }

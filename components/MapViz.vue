@@ -22,6 +22,7 @@ export default {
             // d3 map
             svg: null,
             stateHexList: [],
+            tooltip: { title: null },
         };
     },
 
