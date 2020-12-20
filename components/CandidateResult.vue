@@ -103,7 +103,6 @@ export default {
 <style scoped>
 .result {
     width: 400px;
-    margin: 5px;
 }
 
 .party-icon {
