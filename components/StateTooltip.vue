@@ -1,6 +1,5 @@
 <template>
     <b-container class="result" fluid>
-        <h3>Election Result</h3>
         <CandidateResult
             v-for="(candidate, index) in candidateResultList"
             :key="index"
@@ -10,6 +9,7 @@
             :voter="candidate.voter"
             :vote="candidate.vote"
         />
+        <h6>Some other data here...</h6>
     </b-container>
 </template>
 
@@ -17,8 +17,8 @@
 import { CandidateResult } from './CandidateResult';
 
 export default {
-    name: 'ElectionResult',
-    components: [CandidateResult],
+    name: 'StateTooltip',
+    components: { CandidateResult },
     props: {
         candidateResultList: {
             type: Array,
