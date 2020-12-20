@@ -7,7 +7,7 @@
       "label": "PERLIS",
       "result": {
         "voterNo": 100,
-        "voteNo": 50,
+        "voteNo": 30,
         "partyId": "bn",
         "candidateName": "Najib Tun Razak",
         "candidatePicture": ""
@@ -33,7 +33,7 @@
             "label": "KANGAR",
             "result": {
               "voterNo": 100,
-              "voteNo": 50,
+              "voteNo": 70,
               "partyId": "pas",
               "candidateName": "Najib Tun Razak",
               "candidatePicture": ""
