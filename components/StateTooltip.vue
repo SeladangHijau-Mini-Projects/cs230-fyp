@@ -3,7 +3,7 @@
         <CandidateResult
             v-for="(candidate, index) in candidateResultList"
             :key="index"
-            class="state-tooltip"
+            class="candidate-result"
             :name="candidate.name"
             :party-color="partyColor(candidate.partyId)"
             :party-icon-src="candidate.partyIcon"
