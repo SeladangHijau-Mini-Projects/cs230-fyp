@@ -2,10 +2,9 @@
     <div>
         <svg id="map" :height="height" :width="width"></svg>
 
-        <!-- TODO: make this as tooltip -->
         <StateTooltip
             id="state-tooltip"
-            :style="'position: relative; opacity: ' + (showTooltip ? '1' : '0')"
+            :style="'position: absolute; opacity: ' + (showTooltip ? '1' : '0')"
             :candidate-result-list="candidateResultList"
         />
     </div>
@@ -148,22 +147,30 @@ export default {
         },
         initStateTooltip() {
             const _this = this;
-            const stateTooltip = d3.select('#state-tooltip');
 
             d3.selectAll('.state')
                 .on('mouseover', function (hex, data) {
                     const result = data.result;
 
-                    _this.candidateResultList.push({
-                        name: result.candidateName,
-                        partyId: result.partyId,
-                        partyIcon: '',
-                        voter: result.voterNo,
-                        vote: result.voteNo,
-                    });
+                    // TODO: need to show correct data
+                    _this.candidateResultList = [
+                        {
+                            name: result.candidateName,
+                            partyId: result.partyId,
+                            partyIcon: '',
+                            voter: result.voterNo,
+                            vote: result.voteNo,
+                        },
+                    ];
                     _this.showTooltip = true;
-
-                    return stateTooltip.style('visibility', 'visible');
+                })
+                .on('mousemove', function (hex, data) {
+                    if (_this.showTooltip) {
+                        _this.setTooltipCoordinate(
+                            hex.clientX - 430,
+                            hex.clientY,
+                        );
+                    }
                 })
                 .on('mouseout', function (d) {
                     _this.candidateResultList.splice(
@@ -171,9 +178,12 @@ export default {
                         _this.candidateResultList.length,
                     );
                     _this.showTooltip = false;
-
-                    return stateTooltip.style('visibility', 'hidden');
                 });
+        },
+
+        setTooltipCoordinate(xCoor, yCoor) {
+            document.getElementById('state-tooltip').style.left = `${xCoor}px`;
+            document.getElementById('state-tooltip').style.top = `${yCoor}px`;
         },
     },
 };
