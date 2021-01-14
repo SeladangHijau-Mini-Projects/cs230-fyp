@@ -10,7 +10,6 @@
             :voter="candidate.voter"
             :vote="candidate.vote"
         />
-        <h6>Some other data here...</h6>
     </b-container>
 </template>
 

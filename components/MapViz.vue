@@ -1,10 +1,11 @@
 <template>
     <div>
         <svg id="map" :height="height" :width="width"></svg>
+
         <!-- TODO: make this as tooltip -->
         <StateTooltip
             id="state-tooltip"
-            style="position: relative"
+            :style="'position: relative; opacity: ' + (showTooltip ? '1' : '0')"
             :candidate-result-list="candidateResultList"
         />
     </div>
@@ -32,9 +33,9 @@ export default {
             // d3 map
             svg: null,
             stateHexList: [],
-            tooltip: { title: null },
 
             candidateResultList: [],
+            showTooltip: false,
         };
     },
 
@@ -160,6 +161,8 @@ export default {
                         voter: result.voterNo,
                         vote: result.voteNo,
                     });
+                    _this.showTooltip = true;
+
                     return stateTooltip.style('visibility', 'visible');
                 })
                 .on('mouseout', function (d) {
@@ -167,6 +170,8 @@ export default {
                         0,
                         _this.candidateResultList.length,
                     );
+                    _this.showTooltip = false;
+
                     return stateTooltip.style('visibility', 'hidden');
                 });
         },
