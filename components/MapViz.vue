@@ -1,13 +1,23 @@
 <template>
-    <svg id="map" :height="height" :width="width"></svg>
+    <div>
+        <svg id="map" :height="height" :width="width"></svg>
+        <!-- TODO: make this as tooltip -->
+        <StateTooltip
+            id="state-tooltip"
+            style="position: relative"
+            :candidate-result-list="candidateResultList"
+        />
+    </div>
 </template>
 
 <script>
 import * as d3 from 'd3';
 import * as d3Hexjson from 'd3-hexjson';
+import { StateTooltip } from './StateTooltip';
 
 export default {
     name: 'MapViz',
+    components: { StateTooltip },
     data() {
         return {
             // config
@@ -23,6 +33,8 @@ export default {
             svg: null,
             stateHexList: [],
             tooltip: { title: null },
+
+            candidateResultList: [],
         };
     },
 
@@ -38,6 +50,8 @@ export default {
             this.stateHexJson = await d3.json('./state.hexjson');
         },
         drawMap() {
+            const _this = this;
+
             // Create the svg element
             this.svg = d3
                 .select('#map')
@@ -45,16 +59,15 @@ export default {
                 .append('g');
 
             // draw state hexes
-            const partySettingList = this.partySetting;
-
             this.stateHexList = this.initHex(
                 this.svg,
                 this.stateHexJson,
                 this.width,
                 this.height,
             );
-            this.drawHex(this.stateHexList, partySettingList, 'state');
+            this.drawHex(this.stateHexList, _this.partySetting, 'state');
             this.drawHexLabel(this.stateHexList);
+            this.initStateTooltip();
 
             // draw parliament hex on state click
             const tempSvg = this.svg;
@@ -75,13 +88,17 @@ export default {
                     tempWidth,
                     tempHeight,
                 );
-                funcDrawHex(parliamentHexList, partySettingList, 'parliament');
+                funcDrawHex(
+                    parliamentHexList,
+                    _this.partySetting,
+                    'parliament',
+                );
                 funcDrawHexLabel(parliamentHexList);
 
                 parliamentHexList.on(
                     'click',
                     (parliamentEvent, parliamentKey) => {
-                        console.log('parliamnentKey: ', parliamentKey);
+                        // TODO: parliament tooltip
                     },
                 );
             });
@@ -113,15 +130,6 @@ export default {
                     return partySettingList[winningPartyId].color;
                 });
 
-            // TODO: show tooltip on mouse over
-            hexList
-                .on('mouseover', function (d) {
-                    console.log('(on enter) d: ', d);
-                })
-                .on('mouseout', function (d) {
-                    console.log('(on exit) d: ', d);
-                });
-
             if (className) {
                 hexList.attr('class', className);
             }
@@ -135,6 +143,31 @@ export default {
                 .attr('text-anchor', 'middle')
                 .text(function (hex) {
                     return hex.label;
+                });
+        },
+        initStateTooltip() {
+            const _this = this;
+            const stateTooltip = d3.select('#state-tooltip');
+
+            d3.selectAll('.state')
+                .on('mouseover', function (hex, data) {
+                    const result = data.result;
+
+                    _this.candidateResultList.push({
+                        name: result.candidateName,
+                        partyId: result.partyId,
+                        partyIcon: '',
+                        voter: result.voterNo,
+                        vote: result.voteNo,
+                    });
+                    return stateTooltip.style('visibility', 'visible');
+                })
+                .on('mouseout', function (d) {
+                    _this.candidateResultList.splice(
+                        0,
+                        _this.candidateResultList.length,
+                    );
+                    return stateTooltip.style('visibility', 'hidden');
                 });
         },
     },
