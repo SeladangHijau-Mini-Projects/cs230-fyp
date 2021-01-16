@@ -132,7 +132,6 @@ export default {
                 .on('mouseover', function (hex, data) {
                     const result = data.result;
 
-                    // TODO: need to show correct data
                     _this.candidateResultList = [
                         {
                             name: result.candidateName,
