@@ -66,34 +66,24 @@ export default {
                 this.height,
             );
             this.drawHex(this.stateHexList, _this.partySetting, 'state');
-            this.drawHexLabel(this.stateHexList);
             this.initStateTooltip();
 
             // draw parliament hex on state click
-            const tempSvg = this.svg;
-            const tempWidth = this.width;
-            const tempHeight = this.height;
-            const tempStateHexJsonData = this.stateHexJson;
-            const funcInitHex = this.initHex;
-            const funcDrawHex = this.drawHex;
-            const funcDrawHexLabel = this.drawHexLabel;
-
             this.stateHexList.on('click', (event, hex) => {
                 // clear state hexes
                 d3.selectAll('.state').remove();
 
-                const parliamentHexList = funcInitHex(
-                    tempSvg,
-                    tempStateHexJsonData.hexes[hex.key].parliament,
-                    tempWidth,
-                    tempHeight,
+                const parliamentHexList = _this.initHex(
+                    _this.svg,
+                    _this.stateHexJson.hexes[hex.key].parliament,
+                    _this.width,
+                    _this.height,
                 );
-                funcDrawHex(
+                _this.drawHex(
                     parliamentHexList,
                     _this.partySetting,
                     'parliament',
                 );
-                funcDrawHexLabel(parliamentHexList);
 
                 parliamentHexList.on(
                     'click',
@@ -129,12 +119,6 @@ export default {
                     const winningPartyId = hex.result.partyId;
                     return partySettingList[winningPartyId].color;
                 });
-
-            if (className) {
-                hexList.attr('class', className);
-            }
-        },
-        drawHexLabel(hexList) {
             hexList
                 .append('text')
                 .attr('class', 'label-state')
@@ -144,10 +128,15 @@ export default {
                 .text(function (hex) {
                     return hex.label;
                 });
+
+            if (className) {
+                hexList.attr('class', className);
+            }
         },
         initStateTooltip() {
             const _this = this;
 
+            // TODO: fix bug for blinking tooltip
             d3.selectAll('.state')
                 .on('mouseover', function (hex, data) {
                     const result = data.result;
@@ -163,6 +152,8 @@ export default {
                         },
                     ];
                     _this.showTooltip = true;
+
+                    console.log('mouseover');
                 })
                 .on('mousemove', function (hex, data) {
                     if (_this.showTooltip) {
@@ -171,13 +162,14 @@ export default {
                             hex.clientY,
                         );
                     }
+
+                    console.log('mousemove');
                 })
                 .on('mouseout', function (d) {
-                    _this.candidateResultList.splice(
-                        0,
-                        _this.candidateResultList.length,
-                    );
+                    _this.candidateResultList.length = [];
                     _this.showTooltip = false;
+
+                    console.log('mouseout');
                 });
         },
 
