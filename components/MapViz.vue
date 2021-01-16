@@ -137,14 +137,13 @@ export default {
                         {
                             name: result.candidateName,
                             partyId: result.partyId,
-                            partyIcon: '',
+                            partyIcon: result.partyId
+                                ? _this.partySetting[result.partyId].iconUrl
+                                : _this.partySetting.others.iconUrl,
                             voter: result.voterNo,
                             vote: result.voteNo,
                         },
                     ];
-                })
-                .on('mouseout', function (d) {
-                    _this.candidateResultList.length = [];
                 });
             hexList
                 .append('text')
