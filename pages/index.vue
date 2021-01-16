@@ -1,6 +1,6 @@
 <template>
     <b-container>
-        <b-row>
+        <b-row class="map">
             <b-col>
                 <MapViz />
             </b-col>
@@ -16,4 +16,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.map {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+</style>
