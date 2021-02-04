@@ -78,6 +78,8 @@ export default {
                 .attr('points', function (hex) {
                     return hex.points;
                 })
+                .attr('stroke', 'white')
+                .attr('stroke-width', '2')
                 .attr(
                     'fill',
                     (hex) => _this.partySetting[hex.result.partyId].color,
@@ -86,6 +88,8 @@ export default {
             this.hexList
                 .append('text')
                 .attr('class', 'state-label')
+                .attr('stroke', 'black')
+                .attr('text-anchor', 'middle')
                 .text((hex) => _this.stateSetting[hex.key].name);
         },
     },
@@ -95,16 +99,5 @@ export default {
 <style scoped>
 #map {
     border: 1px solid black;
-}
-
-.state {
-    stroke: white;
-    stroke-width: 2;
-}
-
-.state-label {
-    stroke: black;
-    stroke-width: 2;
-    text-anchor: middle;
 }
 </style>
