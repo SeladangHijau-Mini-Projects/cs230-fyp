@@ -1,14 +1,35 @@
 <template>
-    <div class="container">
-        <MapViz />
-    </div>
+    <b-container>
+        <b-row class="map">
+            <b-col>
+                <Map
+                    :result-data="electionResult"
+                    :state-setting="stateSetting"
+                    :race-setting="raceSetting"
+                    :party-setting="partySetting"
+                />
+            </b-col>
+        </b-row>
+    </b-container>
 </template>
 
 <script>
-import MapViz from '../components/MapViz';
+import raceSettingData from '../static/race.json';
+import partySettingData from '../static/party.json';
+import stateSettingData from '../static/state.json';
+import electionResultData from '../static/result.json';
+import { Map } from '../components/Map';
 
 export default {
-    components: { MapViz },
+    components: { Map },
+    data() {
+        return {
+            electionResult: electionResultData,
+            raceSetting: raceSettingData,
+            partySetting: partySettingData,
+            stateSetting: stateSettingData,
+        };
+    },
 };
 </script>
 
