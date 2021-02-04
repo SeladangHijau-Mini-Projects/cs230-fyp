@@ -64,15 +64,16 @@ export default {
     },
 
     mounted() {
-        this.drawHex('state');
+        // TODO: find a way to not use mounted() function
+        this.drawStateHex();
     },
 
     methods: {
-        drawHex(className) {
+        drawStateHex() {
             const _this = this;
 
             this.hexList
-                .attr('class', className)
+                .attr('class', 'state')
                 .append('polygon')
                 .attr('points', function (hex) {
                     return hex.points;
@@ -85,7 +86,7 @@ export default {
             this.hexList
                 .append('text')
                 .attr('class', 'state-label')
-                .text((hex) => hex.label);
+                .text((hex) => _this.stateSetting[hex.key].name);
         },
     },
 };
