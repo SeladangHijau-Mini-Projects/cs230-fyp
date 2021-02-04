@@ -1,10 +1,10 @@
 <template>
-    <svg id="map" :height="height" :width="width"></svg>
+    <svg id="map" :viewBox="viewBox"></svg>
 </template>
 
 <script>
-// import * as d3 from 'd3';
-// import * as d3Hexjson from 'd3-hexjson';
+import * as d3 from 'd3';
+import * as d3Hexjson from 'd3-hexjson';
 
 export default {
     name: 'Map',
@@ -38,11 +38,55 @@ export default {
             type: Object,
         },
     },
-    data() {
-        return {
-            // d3 map
-            svg: null,
-        };
+
+    computed: {
+        viewBox() {
+            return `0 0 ${this.width} ${this.height}`;
+        },
+        svg() {
+            return d3.select('#map');
+        },
+        hexList() {
+            const hexJson = d3Hexjson.renderHexJSON(
+                this.resultData,
+                this.width,
+                this.height,
+            );
+
+            return this.svg
+                .selectAll('g')
+                .data(hexJson)
+                .enter()
+                .append('g')
+                .attr('cursor', 'pointer')
+                .attr('transform', (hex) => `translate(${hex.x}, ${hex.y})`);
+        },
+    },
+
+    mounted() {
+        this.drawHex('state');
+    },
+
+    methods: {
+        drawHex(className) {
+            const _this = this;
+
+            this.hexList
+                .attr('class', className)
+                .append('polygon')
+                .attr('points', function (hex) {
+                    return hex.points;
+                })
+                .attr(
+                    'fill',
+                    (hex) => _this.partySetting[hex.result.partyId].color,
+                );
+
+            this.hexList
+                .append('text')
+                .attr('class', 'state-label')
+                .text((hex) => hex.label);
+        },
     },
 };
 </script>
@@ -50,5 +94,16 @@ export default {
 <style scoped>
 #map {
     border: 1px solid black;
+}
+
+.state {
+    stroke: white;
+    stroke-width: 2;
+}
+
+.state-label {
+    stroke: black;
+    stroke-width: 2;
+    text-anchor: middle;
 }
 </style>
