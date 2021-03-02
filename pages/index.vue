@@ -3,7 +3,7 @@
         <b-row class="map">
             <b-col>
                 <Map
-                    :result-data="electionResult"
+                    :election-result="electionResult"
                     :state-setting="stateSetting"
                     :race-setting="raceSetting"
                     :party-setting="partySetting"

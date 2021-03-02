@@ -21,7 +21,7 @@ export default {
             default: 10,
             type: Number,
         },
-        resultData: {
+        electionResult: {
             required: true,
             type: Object,
         },
@@ -38,7 +38,6 @@ export default {
             type: Object,
         },
     },
-
     computed: {
         viewBox() {
             return `0 0 ${this.width} ${this.height}`;
@@ -48,7 +47,7 @@ export default {
         },
         hexList() {
             const hexJson = d3Hexjson.renderHexJSON(
-                this.resultData,
+                this.electionResult,
                 this.width,
                 this.height,
             );
@@ -62,13 +61,23 @@ export default {
                 .attr('transform', (hex) => `translate(${hex.x}, ${hex.y})`);
         },
     },
+    watch: {
+        electionResult: {
+            deep: true,
+            handler() {
+                this.plot();
+            },
+        },
+    },
 
     mounted() {
-        // TODO: find a way to not use mounted() function
-        this.drawStateHex();
+        this.plot();
     },
 
     methods: {
+        plot() {
+            this.drawStateHex();
+        },
         drawStateHex() {
             const _this = this;
 
