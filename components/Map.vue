@@ -65,21 +65,20 @@ export default {
         electionResult: {
             deep: true,
             handler() {
-                this.plot();
+                this.drawStateHex();
             },
         },
     },
 
     mounted() {
-        this.plot();
+        this.drawStateHex();
     },
 
     methods: {
-        plot() {
-            this.drawStateHex();
-        },
         drawStateHex() {
             const _this = this;
+
+            this.svg.selectAll('g').remove();
 
             this.hexList
                 .attr('class', 'state')
